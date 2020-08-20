@@ -1,5 +1,3 @@
-## Introductions
-
 Hello friends and welcome to this full day workshop on Azure Data Factory. Today we will be all becoming advanced factory workers!... And we completely recommend this description when describing your job to family members. But be warned, if you go on to tell them that the factory is in the cloud you are likely to be branded as crazy. However, here and now that is ok. You are amoungst like minded geeky friends that all want to become cloud factory workers as well :-)
 
 On a more serious note; throughout our day of training you will quickly notice, like with most technologies, there is an awful lot of different ways you can implement this Azure orchestration service and understanding the best way to do something is often the biggest challenge. That said, if you only take away one thing from today I would ask that you have an appreciation of this fact. Then when delviering solutions you take a step back from the requirements and think about the overall technical design and how Azure Data Factory should fit into your platform as a core component.
@@ -28,7 +26,7 @@ We’ll breakdown the content for this rich Azure PaaS resource as follows:
 
 If that's not enough content for one day, you will also get access to a set of hands-on labs that you can work through at your own pace. Whether you are new to Azure Data Factory or have some experience, you will leave this workshop with new skills and ideas for your projects.
 
-## About Me
+## Training Day Contributors
 ### Paul Andrew 
 __Principal Consultant - Solution Architect & Data Platform MVP @ Altius Consulting Ltd__
 
@@ -41,7 +39,63 @@ You can contact Paul via:
 - LinkedIn [In/mrpaulandrew](https://www.linkedin.com/in/mrpaulandrew/)
 - Blog [mrpaulandrew.com](https://mrpaulandrew.com)
 
+### Richard Swinbank
+
+Lab author extraordinaire!!
+;-)
+
 ## Agenda
 
-## Structure of this GitHub Repository
+* __Module 1:__ [Data Factory Fundamentals](#AddLinkToSlides)
+    * What is it and why use it?
+    * Resource Components
+    * Common Activities
+
+* __Module 2:__ [Uploading Data to Azure](#AddLinkToSlides)
+    * Integration Runtimes
+    * Hosted IR Patterns
+    * Private Endpoints
+
+* __Module 3:__ [Using SSIS Packages in Azure](#AddLinkToSlides)
+    * SSIS Integration Runtime
+    * Packages Running on PaaS
+    * Scaling Out Package Execution
+
+* __Module 4:__ [Data Flows](#AddLinkToSlides)
+    * Mapping Data Flows
+    * Wrangling Data Flows
+    * Configuration
+    * Use Cases
+
+* __Module 5:__ [Metadata Driven Pipelines](#AddLinkToSlides)
+    * Expressions
+    * Dynamic Pipelines
+    * Orchestration Framework - [ADFprocfwk.com](http://adfprocfwk.com/)
+
+* __Module 6:__ [Monitoring Alerting Security](#AddLinkToSlides)
+    * Logging - Kusto Queries
+    * Rolled Based Access
+    * Azure Key Vault Interactions
+    * Self-Managed Keys
+
+* __Module 7:__ [Orchestration Pricing](#AddLinkToSlides)
+    * Activities
+    * Data Integration Units
+    * Data Flow Compute
+    * Wider Platform Orchestration
+
+* __Module 8:__ [CI/CD with Azure DevOps](#AddLinkToSlides)
+    * Source Control vs Developer UI
+    * ARM Templates Deployments
+    * PowerShell Deployments
+
+* __Module 9:__ [Data Factory in Production](#AddLinkToSlides)
+    * Testing
+    * Bootstrapping
+    * Best Practices
+
+* __Module 10:__ [Wrap Up](#AddLinkToSlides)
+    * Conclusions
+    * Questions
+    * Homework
 

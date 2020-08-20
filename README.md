@@ -50,6 +50,7 @@ Lab author extraordinaire!!
     * What is it and why use it?
     * Resource Components
     * Common Activities
+    * Execution Dependencies
 
 * __Module 2:__ [Uploading Data to Azure](#AddLinkToSlides)
     * Integration Runtimes
@@ -74,19 +75,19 @@ Lab author extraordinaire!!
 
 * __Module 6:__ [Monitoring Alerting Security](#AddLinkToSlides)
     * Logging - Kusto Queries
+    * Alerting
     * Rolled Based Access
-    * Azure Key Vault Interactions
-    * Self-Managed Keys
+    * Using Azure Key Vault
 
-* __Module 7:__ [Orchestration Pricing](#AddLinkToSlides)
-    * Activities
+* __Module 7:__ [Pricing & Limitations](#AddLinkToSlides)
     * Data Integration Units
     * Data Flow Compute
-    * Wider Platform Orchestration
+    * Wider Platform Orchestration & Cost Control
+    * Resource Limitations
 
 * __Module 8:__ [CI/CD with Azure DevOps](#AddLinkToSlides)
     * Source Control vs Developer UI
-    * ARM Templates Deployments
+    * ARM Template Deployments
     * PowerShell Deployments
 
 * __Module 9:__ [Data Factory in Production](#AddLinkToSlides)

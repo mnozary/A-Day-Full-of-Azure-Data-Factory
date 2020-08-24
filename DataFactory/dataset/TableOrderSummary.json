@@ -1,0 +1,26 @@
+{
+	"name": "TableOrderSummary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "trainingdb01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SalesOrderNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "RecordCount",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "OrderSummary"
+		}
+	}
+}

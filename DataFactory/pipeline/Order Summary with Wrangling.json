@@ -1,0 +1,9 @@
+{
+	"name": "Order Summary with Wrangling",
+	"properties": {
+		"folder": {
+			"name": "Demo Pipelines/Data Flows"
+		},
+		"annotations": []
+	}
+}

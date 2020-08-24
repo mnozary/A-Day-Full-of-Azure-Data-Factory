@@ -33,6 +33,10 @@
 						"sqlReaderStoredProcedureName": "[dbo].[GetBuckets]",
 						"partitionOption": "None"
 					},
+					"dataset": {
+						"referenceName": "GetSetMetadata",
+						"type": "DatasetReference"
+					},
 					"firstRowOnly": false
 				}
 			},
@@ -62,6 +66,10 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Scale Out Level 2",
+									"type": "PipelineReference"
+								},
 								"waitOnCompletion": true,
 								"parameters": {
 									"BucketId": {
@@ -110,6 +118,10 @@
 							"type": "Int32"
 						}
 					}
+				},
+				"linkedServiceName": {
+					"referenceName": "trainingdb01",
+					"type": "LinkedServiceReference"
 				}
 			},
 			{
@@ -129,6 +141,10 @@
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[dbo].[SetBucketLogEntry]",
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "GetSetMetadata",
+						"type": "DatasetReference"
 					}
 				}
 			},
@@ -146,6 +162,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[SetBucketProcesses]"
+				},
+				"linkedServiceName": {
+					"referenceName": "trainingdb01",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],

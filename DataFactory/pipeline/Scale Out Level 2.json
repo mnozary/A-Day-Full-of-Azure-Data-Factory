@@ -29,6 +29,10 @@
 						},
 						"partitionOption": "None"
 					},
+					"dataset": {
+						"referenceName": "GetSetMetadata",
+						"type": "DatasetReference"
+					},
 					"firstRowOnly": false
 				}
 			},
@@ -68,6 +72,10 @@
 									"value": "@concat('[workers].[DumpDataAndWait',item().ProcessId,']')",
 									"type": "Expression"
 								}
+							},
+							"linkedServiceName": {
+								"referenceName": "trainingdb01",
+								"type": "LinkedServiceReference"
 							}
 						}
 					]

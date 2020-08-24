@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Upload People",
+				"name": "Upload Any File",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {

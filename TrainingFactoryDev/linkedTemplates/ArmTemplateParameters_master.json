@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "TrainingFactoryDev"
+		},
+		"TrainingKeys01_properties_typeProperties_baseUrl": {
+			"value": "https://TrainingKeys01.vault.azure.net/"
+		},
+		"trainingdb01_properties_typeProperties_connectionString_secretName": {
+			"value": "ConnectionString-trainingdb01"
+		},
+		"PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/77a3e40b-dd36-433c-90ca-a09f39724af3/resourcegroups/CommunityDemos/providers/Microsoft.DataFactory/factories/PaulsFunFactoryV2/integrationruntimes/WorkLaptop"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

@@ -1,0 +1,63 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "TrainingFactoryDev"
+		},
+		"TrainingKeys01_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://TrainingKeys01.vault.azure.net/"
+		},
+		"trainingdb01_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "ConnectionString-trainingdb01"
+		},
+		"PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/77a3e40b-dd36-433c-90ca-a09f39724af3/resourcegroups/CommunityDemos/providers/Microsoft.DataFactory/factories/PaulsFunFactoryV2/integrationruntimes/WorkLaptop"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "TrainingFactoryDev_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"TrainingKeys01_properties_typeProperties_baseUrl": {
+						"value": "[parameters('TrainingKeys01_properties_typeProperties_baseUrl')]"
+					},
+					"PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId')]"
+					},
+					"trainingdb01_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('trainingdb01_properties_typeProperties_connectionString_secretName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

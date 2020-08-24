@@ -1,0 +1,17 @@
+{
+	"name": "trainingdb01",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "TrainingKeys01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "ConnectionString-trainingdb01"
+			}
+		}
+	}
+}

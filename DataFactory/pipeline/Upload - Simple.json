@@ -1,0 +1,9 @@
+{
+	"name": "Upload - Simple",
+	"properties": {
+		"folder": {
+			"name": "Demo Pipelines/Data Uploads"
+		},
+		"annotations": []
+	}
+}

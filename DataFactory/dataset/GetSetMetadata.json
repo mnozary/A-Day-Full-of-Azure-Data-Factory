@@ -1,0 +1,12 @@
+{
+	"name": "GetSetMetadata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "trainingdb01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"name": "LakeFilePersonCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "traininglake01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Person.csv",
+				"folderPath": "Landing",
+				"fileSystem": "datawarehouse"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}

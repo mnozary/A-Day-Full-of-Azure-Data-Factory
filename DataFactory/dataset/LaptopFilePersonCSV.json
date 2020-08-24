@@ -1,0 +1,32 @@
+{
+	"name": "LaptopFilePersonCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LaptopFiles",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "Person.csv",
+				"folderPath": "ForUpload/People"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}

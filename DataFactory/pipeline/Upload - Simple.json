@@ -1,9 +1,9 @@
 {
-	"name": "Upload - Copy Params",
+	"name": "Upload - Simple",
 	"properties": {
 		"activities": [
 			{
-				"name": "Upload People",
+				"name": "Upload Person",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -48,22 +48,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "LaptopsFiles",
-						"type": "DatasetReference",
-						"parameters": {
-							"Directory": "ForUpload\\People",
-							"File": "Person.csv"
-						}
+						"referenceName": "LaptopFilePersonCSV",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "LakeFiles",
-						"type": "DatasetReference",
-						"parameters": {
-							"Directory": "Landing",
-							"File": "Person.csv"
-						}
+						"referenceName": "LakeFilePersonCSV",
+						"type": "DatasetReference"
 					}
 				]
 			}

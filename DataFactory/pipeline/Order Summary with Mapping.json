@@ -1,5 +1,5 @@
 {
-	"name": "OrderSummary",
+	"name": "Order Summary with Mapping",
 	"properties": {
 		"activities": [
 			{

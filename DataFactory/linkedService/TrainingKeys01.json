@@ -1,0 +1,10 @@
+{
+	"name": "TrainingKeys01",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://TrainingKeys01.vault.azure.net/"
+		}
+	}
+}

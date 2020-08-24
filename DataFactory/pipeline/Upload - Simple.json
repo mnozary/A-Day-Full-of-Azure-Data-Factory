@@ -19,7 +19,7 @@
 						"referenceName": "LaptopsFiles",
 						"type": "DatasetReference",
 						"parameters": {
-							"Directory": "People"
+							"Directory": "ForUpload\\People"
 						}
 					},
 					"fieldList": [

@@ -1,8 +1,8 @@
 {
-	"name": "LaptopsFiles",
+	"name": "LakeFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LaptopFiles",
+			"referenceName": "traininglake01",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -17,7 +17,7 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "FileServerLocation",
+				"type": "AzureBlobFSLocation",
 				"fileName": {
 					"value": "@dataset().File",
 					"type": "Expression"
@@ -25,7 +25,8 @@
 				"folderPath": {
 					"value": "@dataset().Directory",
 					"type": "Expression"
-				}
+				},
+				"fileSystem": "datawarehouse"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

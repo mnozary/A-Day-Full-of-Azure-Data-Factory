@@ -1,5 +1,5 @@
 {
-	"name": "LaptopsFiles",
+	"name": "LaptopFolders",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LaptopFiles",
@@ -8,9 +8,6 @@
 		"parameters": {
 			"Directory": {
 				"type": "string"
-			},
-			"File": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -18,10 +15,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "FileServerLocation",
-				"fileName": {
-					"value": "@dataset().File",
-					"type": "Expression"
-				},
 				"folderPath": {
 					"value": "@dataset().Directory",
 					"type": "Expression"

@@ -14,6 +14,12 @@
 		"parameters": {
 			"LinkedServiceConnectionSecret": {
 				"type": "string"
+			},
+			"SchemaName": {
+				"type": "string"
+			},
+			"TableName": {
+				"type": "string"
 			}
 		},
 		"folder": {
@@ -21,6 +27,16 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().SchemaName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
 	}
 }

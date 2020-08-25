@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "MappingOrderAggregation",
+				"name": "Mapping Order Aggregation",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {

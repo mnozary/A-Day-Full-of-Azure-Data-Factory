@@ -5,6 +5,9 @@
 			"referenceName": "LaptopFiles",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Laptop"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

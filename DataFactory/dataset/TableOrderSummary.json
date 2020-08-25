@@ -5,6 +5,9 @@
 			"referenceName": "trainingdb01",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "SQLDB"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [

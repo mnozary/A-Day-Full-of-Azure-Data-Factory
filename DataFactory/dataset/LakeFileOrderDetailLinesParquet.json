@@ -5,6 +5,9 @@
 			"referenceName": "traininglake01noneKV",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Lake"
+		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {

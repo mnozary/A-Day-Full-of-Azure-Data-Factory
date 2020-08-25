@@ -582,5 +582,6 @@
     <Build Include="workers\Stored Procedures\DumpDataAndWait212.sql" />
     <Build Include="workers\Stored Procedures\DumpDataAndWait346.sql" />
     <Build Include="Security\workers.sql" />
+    <Build Include="dbo\Tables\FileToUpload.sql" />
   </ItemGroup>
 </Project>

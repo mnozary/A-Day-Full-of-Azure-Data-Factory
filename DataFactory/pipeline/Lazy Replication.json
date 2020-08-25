@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT * FROM sys.objects WHERE [type] = 'U'",
+						"sqlReaderQuery": {
+							"value": "@pipeline().parameters.TableLookupSQLQuery",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -28,7 +31,9 @@
 							"LinkedServiceConnectionSecret": {
 								"value": "@pipeline().parameters.SourceConnectionSecret",
 								"type": "Expression"
-							}
+							},
+							"SchemaName": "sys",
+							"TableName": "objects"
 						}
 					},
 					"firstRowOnly": false
@@ -71,7 +76,13 @@
 									"partitionOption": "None"
 								},
 								"sink": {
-									"type": "AzureSqlSink"
+									"type": "AzureSqlSink",
+									"preCopyScript": {
+										"value": "@{concat('TRUNCATE TABLE ',item().SchemaTable,'.',item().TableName,';')}",
+										"type": "Expression"
+									},
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
 								"translator": {
@@ -91,6 +102,14 @@
 										"LinkedServiceConnectionSecret": {
 											"value": "@pipeline().parameters.SourceConnectionSecret",
 											"type": "Expression"
+										},
+										"SchemaName": {
+											"value": "@item().SchemaName",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@item().TableName",
+											"type": "Expression"
 										}
 									}
 								}
@@ -103,6 +122,14 @@
 										"LinkedServiceConnectionSecret": {
 											"value": "@pipeline().parameters.TargetConnectionSecret",
 											"type": "Expression"
+										},
+										"SchemaName": {
+											"value": "@item().SchemaName",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@item().TableName",
+											"type": "Expression"
 										}
 									}
 								}
@@ -114,10 +141,16 @@
 		],
 		"parameters": {
 			"SourceConnectionSecret": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "ConnectionString-trainingdb01"
 			},
 			"TargetConnectionSecret": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "ConnectionString-trainingdb02"
+			},
+			"TableLookupSQLQuery": {
+				"type": "string",
+				"defaultValue": "SELECT \ts.name AS SchemaName, \to.name AS TableName FROM  \tsys.objects o \tINNER JOIN sys.schemas s \t\tON o.schema_id = s.schema_id WHERE  \to.[type] = 'U'"
 			}
 		},
 		"folder": {

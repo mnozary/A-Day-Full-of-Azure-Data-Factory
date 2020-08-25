@@ -65,6 +65,27 @@
 										{
 											"name": "FilePath",
 											"value": "$$FILEPATH"
+										},
+										{
+											"name": "DataFactoryName",
+											"value": {
+												"value": "@pipeline().DataFactory",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "PipelineName",
+											"value": {
+												"value": "@pipeline().Pipeline",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "UploadDateTime",
+											"value": {
+												"value": "@utcnow()",
+												"type": "Expression"
+											}
 										}
 									],
 									"storeSettings": {

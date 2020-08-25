@@ -16,6 +16,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "SQLDB"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": []

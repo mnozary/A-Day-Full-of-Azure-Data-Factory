@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "DemoVariable",
-					"value": "@{pipeline().parameters.DemoParam}"
+					"value": "@pipeline().parameters.DemoParam"
 				}
 			}
 		],

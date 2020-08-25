@@ -78,7 +78,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "@{concat('TRUNCATE TABLE ',item().SchemaTable,'.',item().TableName,';')}",
+										"value": "@{concat('TRUNCATE TABLE ',item().SchemaName,'.',item().TableName,';')}",
 										"type": "Expression"
 									},
 									"tableOption": "autoCreate",

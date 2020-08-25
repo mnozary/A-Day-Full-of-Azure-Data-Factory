@@ -3,15 +3,27 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Wait1",
-				"type": "Wait",
+				"name": "Set Variable",
+				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 1
+					"variableName": "DemoVariable",
+					"value": "@pipeline().parameters.WaitDuration"
 				}
 			}
 		],
+		"parameters": {
+			"DemoParam": {
+				"type": "string",
+				"defaultValue": "Example"
+			}
+		},
+		"variables": {
+			"DemoVariable": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Demo Pipelines/Data Uploads"
 		},

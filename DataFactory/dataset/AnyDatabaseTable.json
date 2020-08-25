@@ -1,0 +1,23 @@
+{
+	"name": "AnyDatabaseTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AnyDatabaseConnection",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBConnectionSecret": {
+					"value": "@dataset().LinkedServiceConnectionSecret",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"LinkedServiceConnectionSecret": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

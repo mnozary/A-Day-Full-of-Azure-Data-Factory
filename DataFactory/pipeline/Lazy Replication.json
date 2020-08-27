@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@pipeline().parameters.TableLookupSQLQuery",
+							"value": "@pipeline().parameters.TableLookupQuery",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -77,7 +77,10 @@
 								},
 								"sink": {
 									"type": "AzureSqlSink",
-									"preCopyScript": "IF OBJECT_ID('@{item().SchemaName}.@{item().TableName}') IS NOT NULL TRUNCATE TABLE @{item().SchemaName}.@{item().TableName}",
+									"preCopyScript": {
+										"value": "IF OBJECT_ID('@{item().SchemaName}.@{item().TableName}') IS NOT NULL TRUNCATE TABLE @{item().SchemaName}.@{item().TableName}",
+										"type": "Expression"
+									},
 									"tableOption": "autoCreate",
 									"disableMetricsCollection": false
 								},
@@ -145,7 +148,7 @@
 				"type": "string",
 				"defaultValue": "ConnectionString-trainingdb02"
 			},
-			"TableLookupSQLQuery": {
+			"TableLookupQuery": {
 				"type": "string",
 				"defaultValue": "SELECT \ts.name AS SchemaName, \to.name AS TableName FROM  \tsys.objects o \tINNER JOIN sys.schemas s \t\tON o.schema_id = s.schema_id WHERE  \to.[type] = 'U'"
 			}

@@ -70,6 +70,7 @@
     <None Include="Scripts\Create Worker Procs.sql" />
     <None Include="Scripts\Add Worker Metadata.sql" />
     <None Include="Scripts\Sample Worker Metadata.sql" />
+    <None Include="Scripts\Drop User Tables.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\BucketLog.sql" />
@@ -583,5 +584,8 @@
     <Build Include="workers\Stored Procedures\DumpDataAndWait346.sql" />
     <Build Include="Security\workers.sql" />
     <Build Include="dbo\Tables\FileToUpload.sql" />
+    <Build Include="dbo\Tables\UploadLog.sql" />
+    <Build Include="dbo\Stored Procedures\LogUploadStart.sql" />
+    <Build Include="dbo\Stored Procedures\LogUploadFinish.sql" />
   </ItemGroup>
 </Project>

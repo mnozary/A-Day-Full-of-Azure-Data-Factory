@@ -552,7 +552,7 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "@pipeline().parameters.TableLookupSQLQuery",
+									"value": "@pipeline().parameters.TableLookupQuery",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
@@ -682,7 +682,7 @@
 						"type": "string",
 						"defaultValue": "ConnectionString-trainingdb02"
 					},
-					"TableLookupSQLQuery": {
+					"TableLookupQuery": {
 						"type": "string",
 						"defaultValue": "SELECT \ts.name AS SchemaName, \to.name AS TableName FROM  \tsys.objects o \tINNER JOIN sys.schemas s \t\tON o.schema_id = s.schema_id WHERE  \to.[type] = 'U'"
 					}
@@ -1777,6 +1777,25 @@
 				"[concat(variables('factoryId'), '/datasets/LakeFileOrderDetailLinesParquet')]",
 				"[concat(variables('factoryId'), '/datasets/TableOrderSummary')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DataFlowDemosTTL4Hours')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "UK South",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 32,
+							"timeToLive": 240
+						}
+					}
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }

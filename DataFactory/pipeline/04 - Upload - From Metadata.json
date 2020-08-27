@@ -37,6 +37,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Log Upload Start",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"userProperties": [],
@@ -158,6 +164,49 @@
 							]
 						}
 					]
+				}
+			},
+			{
+				"name": "Log Upload Start",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Get File List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[LogUploadStart]",
+					"storedProcedureParameters": {
+						"FileCount": {
+							"value": {
+								"value": "@activity('Get File List').output.count",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"TriggerId": {
+							"value": {
+								"value": "@pipeline().TriggerId",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "trainingdb01",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],

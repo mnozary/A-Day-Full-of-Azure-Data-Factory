@@ -5,11 +5,29 @@
 		"factoryName": {
 			"value": "TrainingFactoryDev"
 		},
+		"traininglake01noneKV_accountKey": {
+			"value": ""
+		},
+		"AnyDatabaseConnection_properties_typeProperties_connectionString_secretName": {
+			"value": "@linkedService().DBConnectionSecret"
+		},
+		"LaptopFiles_properties_typeProperties_host": {
+			"value": "C:\\ADFRoot\\"
+		},
+		"LaptopFiles_properties_typeProperties_userId": {
+			"value": "ADFIRUser"
+		},
 		"TrainingKeys01_properties_typeProperties_baseUrl": {
 			"value": "https://TrainingKeys01.vault.azure.net/"
 		},
 		"trainingdb01_properties_typeProperties_connectionString_secretName": {
 			"value": "ConnectionString-trainingdb01"
+		},
+		"traininglake01_properties_typeProperties_url": {
+			"value": "https://traininglake01.dfs.core.windows.net"
+		},
+		"traininglake01noneKV_properties_typeProperties_url": {
+			"value": "https://traininglake01.dfs.core.windows.net"
 		},
 		"PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId": {
 			"value": "/subscriptions/77a3e40b-dd36-433c-90ca-a09f39724af3/resourcegroups/CommunityDemos/providers/Microsoft.DataFactory/factories/PaulsFunFactoryV2/integrationruntimes/WorkLaptop"

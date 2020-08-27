@@ -7,17 +7,41 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "TrainingFactoryDev"
 		},
+		"traininglake01noneKV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'traininglake01noneKV'"
+		},
 		"TrainingKeys01_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://TrainingKeys01.vault.azure.net/"
+		},
+		"traininglake01noneKV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://traininglake01.dfs.core.windows.net"
 		},
 		"PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId": {
 			"type": "string",
 			"defaultValue": "/subscriptions/77a3e40b-dd36-433c-90ca-a09f39724af3/resourcegroups/CommunityDemos/providers/Microsoft.DataFactory/factories/PaulsFunFactoryV2/integrationruntimes/WorkLaptop"
 		},
+		"AnyDatabaseConnection_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "@linkedService().DBConnectionSecret"
+		},
+		"LaptopFiles_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\ADFRoot\\"
+		},
+		"LaptopFiles_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "ADFIRUser"
+		},
 		"trainingdb01_properties_typeProperties_connectionString_secretName": {
 			"type": "string",
 			"defaultValue": "ConnectionString-trainingdb01"
+		},
+		"traininglake01_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://traininglake01.dfs.core.windows.net"
 		}
 	},
 	"variables": {
@@ -38,6 +62,23 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/traininglake01noneKV')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('traininglake01noneKV_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('traininglake01noneKV_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/PaulsLaptopIR')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -51,6 +92,263 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LakeFileOrderDetailLinesParquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "traininglake01noneKV",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Lake"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "OrderDetailLines.parquet",
+						"folderPath": "Raw",
+						"fileSystem": "datawarehouse"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "SalesOrderID",
+						"type": "INT32"
+					},
+					{
+						"name": "SalesOrderDetailID",
+						"type": "INT32"
+					},
+					{
+						"name": "OrderQty",
+						"type": "INT32"
+					},
+					{
+						"name": "ProductID",
+						"type": "INT32"
+					},
+					{
+						"name": "UnitPrice",
+						"type": "DECIMAL",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "UnitPriceDiscount",
+						"type": "DECIMAL",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "LineTotal",
+						"type": "DECIMAL",
+						"precision": 38,
+						"scale": 6
+					},
+					{
+						"name": "rowguid",
+						"type": "UTF8"
+					},
+					{
+						"name": "ModifiedDate",
+						"type": "INT96"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/traininglake01noneKV')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LakeFileOrderHeaderParquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "traininglake01noneKV",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Lake"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "OrderHeader.parquet",
+						"folderPath": "Raw",
+						"fileSystem": "datawarehouse"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "SalesOrderID",
+						"type": "INT32"
+					},
+					{
+						"name": "RevisionNumber",
+						"type": "INT32"
+					},
+					{
+						"name": "OrderDate",
+						"type": "INT96"
+					},
+					{
+						"name": "DueDate",
+						"type": "INT96"
+					},
+					{
+						"name": "ShipDate",
+						"type": "INT96"
+					},
+					{
+						"name": "Status",
+						"type": "INT32"
+					},
+					{
+						"name": "OnlineOrderFlag",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "SalesOrderNumber",
+						"type": "UTF8"
+					},
+					{
+						"name": "PurchaseOrderNumber",
+						"type": "UTF8"
+					},
+					{
+						"name": "AccountNumber",
+						"type": "UTF8"
+					},
+					{
+						"name": "CustomerID",
+						"type": "INT32"
+					},
+					{
+						"name": "ShipToAddressID",
+						"type": "INT32"
+					},
+					{
+						"name": "BillToAddressID",
+						"type": "INT32"
+					},
+					{
+						"name": "ShipMethod",
+						"type": "UTF8"
+					},
+					{
+						"name": "CreditCardApprovalCode",
+						"type": "UTF8"
+					},
+					{
+						"name": "SubTotal",
+						"type": "DECIMAL",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "TaxAmt",
+						"type": "DECIMAL",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "Freight",
+						"type": "DECIMAL",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "TotalDue",
+						"type": "DECIMAL",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "Comment",
+						"type": "UTF8"
+					},
+					{
+						"name": "rowguid",
+						"type": "UTF8"
+					},
+					{
+						"name": "ModifiedDate",
+						"type": "INT96"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/traininglake01noneKV')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AnyDatabaseConnection')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"DBConnectionSecret": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "TrainingKeys01",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": {
+							"value": "[parameters('AnyDatabaseConnection_properties_typeProperties_connectionString_secretName')]",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/TrainingKeys01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LaptopFiles')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('LaptopFiles_properties_typeProperties_host')]",
+					"userId": "[parameters('LaptopFiles_properties_typeProperties_userId')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "TrainingKeys01",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "ADFIRUser"
+					}
+				},
+				"connectVia": {
+					"referenceName": "PaulsLaptopIR",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/PaulsLaptopIR')]",
+				"[concat(variables('factoryId'), '/linkedServices/TrainingKeys01')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/trainingdb01')]",
@@ -75,6 +373,76 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/traininglake01')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('traininglake01_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "TrainingKeys01",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "traininglake01"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/TrainingKeys01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AnyDatabaseTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AnyDatabaseConnection",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DBConnectionSecret": {
+							"value": "@dataset().LinkedServiceConnectionSecret",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"LinkedServiceConnectionSecret": {
+						"type": "string"
+					},
+					"SchemaName": {
+						"type": "string"
+					},
+					"TableName": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "SQLDB"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": {
+						"value": "@dataset().SchemaName",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().TableName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AnyDatabaseConnection')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/GetSetMetadata')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -82,6 +450,9 @@
 				"linkedServiceName": {
 					"referenceName": "trainingdb01",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "SQLDB"
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
@@ -93,239 +464,298 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Scale Out Level 2')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/LakeFileParquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
-					{
-						"name": "Get Bucket Contents",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[GetBucketContents]",
-								"storedProcedureParameters": {
-									"BucketId": {
-										"type": "Int32",
-										"value": {
-											"value": "@pipeline().parameters.BucketId",
-											"type": "Expression"
-										}
-									}
-								},
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "GetSetMetadata",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "Execute Processes",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Get Bucket Contents",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Get Bucket Contents').output.value",
-								"type": "Expression"
-							},
-							"batchCount": 50,
-							"activities": [
-								{
-									"name": "Run Process",
-									"type": "SqlServerStoredProcedure",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"storedProcedureName": {
-											"value": "@concat('[workers].[DumpDataAndWait',item().ProcessId,']')",
-											"type": "Expression"
-										}
-									},
-									"linkedServiceName": {
-										"referenceName": "trainingdb01",
-										"type": "LinkedServiceReference"
-									}
-								}
-							]
-						}
-					}
-				],
+				"linkedServiceName": {
+					"referenceName": "traininglake01",
+					"type": "LinkedServiceReference"
+				},
 				"parameters": {
-					"BucketId": {
-						"type": "int"
+					"Directory": {
+						"type": "string"
+					},
+					"File": {
+						"type": "string"
 					}
 				},
 				"folder": {
-					"name": "Demo Pipelines/Scaling Out"
+					"name": "Lake"
 				},
-				"annotations": []
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().File",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						},
+						"fileSystem": "datawarehouse"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/GetSetMetadata')]",
+				"[concat(variables('factoryId'), '/linkedServices/traininglake01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LakeFilePersonCSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "traininglake01",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Lake"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "Person.csv",
+						"folderPath": "Landing",
+						"fileSystem": "datawarehouse"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/traininglake01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LakeFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "traininglake01",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					},
+					"File": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Lake"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().File",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						},
+						"fileSystem": "datawarehouse"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/traininglake01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LaptopFilePersonCSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LaptopFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Laptop"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"fileName": "Person.csv",
+						"folderPath": "ForUpload/People"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LaptopFiles')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LaptopFolders')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LaptopFiles",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Laptop"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LaptopFiles')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LaptopsFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LaptopFiles",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					},
+					"File": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Laptop"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"fileName": {
+							"value": "@dataset().File",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LaptopFiles')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TableOrderSummary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "trainingdb01",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "SQLDB"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "SalesOrderNumber",
+						"type": "varchar"
+					},
+					{
+						"name": "RecordCount",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "OrderSummary"
+				}
+			},
+			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/trainingdb01')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Scale Out Level 1')]",
+			"name": "[concat(parameters('factoryName'), '/01 - Upload - Simple')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Get Bucket Ids",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Reset And Log Start",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Reset Bucket Process Map",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[GetBuckets]",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "GetSetMetadata",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "Call Buckets",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Get Bucket Ids",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Get Bucket Ids').output.value",
-								"type": "Expression"
-							},
-							"isSequential": false,
-							"batchCount": 50,
-							"activities": [
-								{
-									"name": "Call Level 2",
-									"type": "ExecutePipeline",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"pipeline": {
-											"referenceName": "Scale Out Level 2",
-											"type": "PipelineReference"
-										},
-										"waitOnCompletion": true,
-										"parameters": {
-											"BucketId": {
-												"value": "@{item().BucketId}",
-												"type": "Expression"
-											}
-										}
-									}
-								}
-							]
-						}
-					},
-					{
-						"name": "Log End",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Call Buckets",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Reset And Log Start",
-								"dependencyConditions": [
-									"Completed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[SetBucketLogEntry]",
-							"storedProcedureParameters": {
-								"LogId": {
-									"value": {
-										"value": "@activity('Reset And Log Start').output.firstRow.LogId",
-										"type": "Expression"
-									},
-									"type": "Int32"
-								}
-							}
-						},
-						"linkedServiceName": {
-							"referenceName": "trainingdb01",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Reset And Log Start",
-						"type": "Lookup",
+						"name": "Upload Person",
+						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -337,47 +767,142 @@
 						"userProperties": [],
 						"typeProperties": {
 							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[SetBucketLogEntry]",
-								"partitionOption": "None"
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "FileServerReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
 							},
-							"dataset": {
-								"referenceName": "GetSetMetadata",
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "LaptopFilePersonCSV",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
-						}
-					},
-					{
-						"name": "Reset Bucket Process Map",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[SetBucketProcesses]"
-						},
-						"linkedServiceName": {
-							"referenceName": "trainingdb01",
-							"type": "LinkedServiceReference"
-						}
+						],
+						"outputs": [
+							{
+								"referenceName": "LakeFilePersonCSV",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"folder": {
-					"name": "Demo Pipelines/Scaling Out"
+					"name": "Demo Pipelines/Data Uploads"
 				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/GetSetMetadata')]",
-				"[concat(variables('factoryId'), '/linkedServices/trainingdb01')]",
-				"[concat(variables('factoryId'), '/pipelines/Scale Out Level 2')]"
+				"[concat(variables('factoryId'), '/datasets/LaptopFilePersonCSV')]",
+				"[concat(variables('factoryId'), '/datasets/LakeFilePersonCSV')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/02 - Upload - Copy Params')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Upload Any File",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "FileServerReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "LaptopsFiles",
+								"type": "DatasetReference",
+								"parameters": {
+									"Directory": "ForUpload\\People",
+									"File": "Person.csv"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "LakeFiles",
+								"type": "DatasetReference",
+								"parameters": {
+									"Directory": "Landing",
+									"File": "Person.csv"
+								}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Demo Pipelines/Data Uploads"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/LaptopsFiles')]",
+				"[concat(variables('factoryId'), '/datasets/LakeFiles')]"
 			]
 		}
 	]

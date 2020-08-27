@@ -168,7 +168,7 @@
 			},
 			{
 				"name": "Log Upload Start",
-				"type": "SqlServerStoredProcedure",
+				"type": "Lookup",
 				"dependsOn": [
 					{
 						"activity": "Get File List",
@@ -186,21 +186,62 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[LogUploadStart]",
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[LogUploadStart]",
+						"storedProcedureParameters": {
+							"FileCount": {
+								"type": "Int32",
+								"value": {
+									"value": "@activity('Get File List').output.count",
+									"type": "Expression"
+								}
+							},
+							"TriggerId": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().TriggerId",
+									"type": "Expression"
+								}
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "GetSetMetadata",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Log Upload Finish",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "UploadFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[LogUploadFinish]",
 					"storedProcedureParameters": {
-						"FileCount": {
+						"LogId": {
 							"value": {
-								"value": "@activity('Get File List').output.count",
+								"value": "@activity('Log Upload Start').output.firstRow.LogId",
 								"type": "Expression"
 							},
 							"type": "Int32"
-						},
-						"TriggerId": {
-							"value": {
-								"value": "@pipeline().TriggerId",
-								"type": "Expression"
-							},
-							"type": "String"
 						}
 					}
 				},

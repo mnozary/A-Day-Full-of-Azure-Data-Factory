@@ -2,7 +2,7 @@
 	"name": "LakeFileOrderDetailLinesParquet",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "traininglake01noneKV",
+			"referenceName": "traininglake01",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {

@@ -19,9 +19,9 @@
 						"referenceName": "MappingOrderAggregation",
 						"type": "DataFlowReference"
 					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
+					"integrationRuntime": {
+						"referenceName": "DataFlowDemosTTL4Hours",
+						"type": "IntegrationRuntimeReference"
 					}
 				}
 			}

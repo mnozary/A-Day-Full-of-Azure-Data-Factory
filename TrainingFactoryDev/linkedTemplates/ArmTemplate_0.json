@@ -79,22 +79,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/PaulsLaptopIR')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {
-					"linkedInfo": {
-						"resourceId": "[parameters('PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId')]",
-						"authorizationType": "Rbac"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DataFlowDemosTTL4Hours')]",
+			"name": "[concat(parameters('factoryName'), '/ForDataFlowDemos')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -104,9 +89,24 @@
 						"location": "UK South",
 						"dataFlowProperties": {
 							"computeType": "General",
-							"coreCount": 32,
+							"coreCount": 8,
 							"timeToLive": 240
 						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PaulsLaptopIR')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {
+					"linkedInfo": {
+						"resourceId": "[parameters('PaulsLaptopIR_properties_typeProperties_linkedInfo_resourceId')]",
+						"authorizationType": "Rbac"
 					}
 				}
 			},

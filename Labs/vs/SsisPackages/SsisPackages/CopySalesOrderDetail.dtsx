@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{7CDEEB6B-6CA1-486E-AE38-DE6B258D1B41}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{6CF4A595-5A2C-4A70-A7B1-0CE8A216DA09}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,11 +23,11 @@
       DTS:ObjectName="AzureDataLakeStorage">
       <DTS:ObjectData>
         <AzureStorageConnectionManager
-          ConnectionString="ServiceType=AzureBlobFS;ConnectUsingManagedIdentity=True;AccountName=adayfullofadfsa;DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;"
+          ConnectionString="ServiceType=AzureBlobFS;ConnectUsingManagedIdentity=True;AccountName=mydatalakestorage;DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;"
           ConnectByProxy="False">
           <AccountKey
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALRKo0Vm/BkOsUrO9CQkY/QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACsKPh9bdzIdhyYkwQtrdDPxyhOiO36Cfo2/lMZyneKsgAAAAAOgAAAAAIAACAAAAAHNXmhdPyz0DMGXhiPLmy8KgE8bFpprZC4t+vFkduUG8AAAAA9Eor9fJv28BW1H0fXBYhlKqNn2auJenjqwqyIYqpgvFzV49mZylcWKSYqEWMU+u8evQp/Ldq4u/OBTbk9nL1dEKuyVJ3qfKiu6F41zxbLclkSAcKFcZOf/Sg+VDynOElv6iRqT4LKFM7jzd7k20nZOxh9bhmLyQh2Ss64E9flYZmlHGxInJ84c7FxAumV8o8009i0yNqo52N+UKona4Qy/RV4YtuANWZCcD9hbpbvEQGeu4Utzf9jJAQz3otN9LlAAAAA0WAvw2cv5K9ieVbiLS7edTscFl+kHOuOXREUehMmBVowIx8Tsn0gMeSZ5lDOFOpsbjtvTOIBflNFDcjD9OnFTA</AccountKey>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALRKo0Vm/BkOsUrO9CQkY/QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAApyZGWZ85IP41tkupVxuqVPa9CQkNSc9klxFsaybp8bgAAAAAOgAAAAAIAACAAAAAo5wUKvCpO/khOvtZHYw5pmTm4t7Flw8p0ZRhzA8yBOVAAAAA9O5o4+hJxFqjS+eTfdl1ATU8Yej2cRj8zRdcMQuzF+A7oz+TeRIa7PE2w6VwR+AQQW2fCwwOu7h7V5VdPIUrmyzBnjzluCfGCw0qq4C3cLkAAAACUu5Ewt57vITHdtc4Krp4g6u4rJAyZoPfzhDnQMMTXJ8OpGf0a5wN2JO2RhYlPtHa+F6taXptVt17VIGLFs81B</AccountKey>
         </AzureStorageConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -38,12 +38,7 @@
       DTS:ObjectName="AzureSqlDatabase">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=adayfullofadf2-sql.database.windows.net;User ID=sql-admin;Initial Catalog=AdventureWorks;Provider=SQLNCLI11.1;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALRKo0Vm/BkOsUrO9CQkY/QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACe6/zGZHw0OFw/iDO41+FdKrMoiLbRWzeOf1IuAqOH5AAAAAAOgAAAAAIAACAAAADx0AsXLL10/XYuYmv3hxVA2HDavEwq5OH2ynJN6ENWKSAAAAC36SOJdSqkrjhjHxTNPe2aoLLx5Ilyl4bOr+VtPY1/EUAAAAAo1c5zLihMleUOuX9XDtqRVgvIANShIa6TbjObp5miOVJrBMAc5jPrInKqf9PasFBmWNEj/EaYg/eTKFX4rMWk</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=myazuresqlserver.database.windows.net;User ID=sqlserverlogin;Initial Catalog=AdventureWorks;Provider=SQLNCLI11.1;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -596,6 +591,14 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT Copy DB table to ADLS\FFD lakeroot-Raw">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT Copy DB table to ADLS\OLEDB_Src SalesOrderDetail">
     <Properties>
       <Property>
@@ -605,14 +608,6 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Copy DB table to ADLS\FFD lakeroot-Raw">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

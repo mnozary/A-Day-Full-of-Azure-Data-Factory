@@ -26,26 +26,26 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-T3L61F1</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALRKo0Vm/BkOsUrO9CQkY/QAAAAACAAAAAAAQZgAAAAEAACAAAADDv1mo260jG7Wtlw0pCliI2WwdQGytyI5pg6N4C/ZR9AAAAAAOgAAAAAIAACAAAADPhzlDje+U1TsaTgxl+1rQPu/nISv91VjUKX2em2nA7pAAAAAEegNJtBNdwU2cppGQih1HsSl69iTHoeDZoqpUhI3oc+1Z87nZmTBlfboDvPN729LBmmZBLmSA/X8C+ZQt9jb5FaI57vFPfZZ8tpSwSpnhURX7Luhr5xzElQWgbn4raELd1pvBu7JbyUXSHeetc+qeoPa2v/h1J3p8w46OqRfJumoeWL1NMUbxG9X1JpclrmBAAAAA5PMJxLCWwE8RiH3gy4EfR86tFDJXyA9oJ38pY/5lrs2FF37Wn2MK2oGfN1tXZeivAEvzkTeppBSZ5L4i4wTFlg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALRKo0Vm/BkOsUrO9CQkY/QAAAAACAAAAAAAQZgAAAAEAACAAAAAmFCOPyVp4vDwSYfQg2QxSQ59E1nQj58VHB5RzjD4NDAAAAAAOgAAAAAIAACAAAAArS9FjY1DDgsQ4GmThzZrbKIOK0PEB6sZ4gwP1xUK0a5AAAACwjH3dFr5enGDSzQ2VTgo2rcbAT4VtLb7VZ5rHNS9mPGlk2aDAqwluyILeYkXpboEvtnuHacvXFi3wX998fqlAiD0dgmQIrjgAqs1D/DAaBJTp+d4E7COlTFr6rLdelFdiU1LjMVyOqycwX1IfXC9fC0Kr8XWl2MoLhfUoxPEW9R+VM5Igri5vAJK2np0UWbRAAAAAKjwX+Xc3scAhAaboxe3eDYvAj24L0MBLmspJvaY/F6tGpXE68kTJt34gl5Znj7mYqUGAWbnLTKYwPu184JzUzQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="CopySalesOrderDetail.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="CopyProductCategory.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters />
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="CopySalesOrderDetail.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="CopyProductCategory.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{D99D7963-C308-43A9-A7B4-956E3178534B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">CopyProductCategory</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6CF4A595-5A2C-4A70-A7B1-0CE8A216DA09}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0BEEFFF7-A042-4855-8EF6-194FDD3AFF3F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

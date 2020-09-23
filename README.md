@@ -71,7 +71,7 @@ Lab author extraordinaire!!
 * __Module 5:__ [Metadata Driven Pipelines](#AddLinkToSlides)
     * Expressions
     * Dynamic Pipelines
-    * Orchestration Framework - [ADFprocfwk.com](http://adfprocfwk.com/)
+    * Orchestration Framework - [procfwk.com](http://procfwk.com/)
 
 * __Module 6:__ [Monitoring Alerting Security](#AddLinkToSlides)
     * Logging - Kusto Queries

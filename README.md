@@ -74,16 +74,18 @@ Lab author extraordinaire!!
     * Orchestration Framework - [procfwk.com](http://procfwk.com/)
 
 * __Module 6:__ [Monitoring Alerting Security](#AddLinkToSlides)
-    * Logging - Kusto Queries
+    * Logging
     * Alerting
-    * Rolled Based Access
     * Using Azure Key Vault
+    * Access & Permissions
 
 * __Module 7:__ [Pricing & Limitations](#AddLinkToSlides)
+  * Cost
+    * Activities
     * Data Integration Units
     * Data Flow Compute
-    * Wider Platform Orchestration & Cost Control
-    * Resource Limitations
+    * Wider Platform Orchestration
+  * Resource Limitations
 
 * __Module 8:__ [CI/CD with Azure DevOps](#AddLinkToSlides)
     * Source Control vs Developer UI

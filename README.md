@@ -1,6 +1,8 @@
 # A Day Full of Azure Data Factory
 
-![Data Factory Icon](https://mrpaulandrew.github.io/procfwk/datafactory.png){:style="float: right;margin-left: 15px;margin-bottom: 10px;"}Hello friends and welcome to this full day workshop on Azure Data Factory. Today we will be all becoming advanced factory workers!... And we completely recommend this description when describing your job to family members. But be warned, if you go on to tell them that the factory is in the cloud you are likely to be branded as crazy. However, here and now that is ok. You are amongst like-minded geeky friends that all want to become cloud factory workers as well :-)
+![Data Factory Icon](https://mrpaulandrew.files.wordpress.com/2020/08/m00-intro-and-agenda.png)
+
+Hello friends and welcome to this full day workshop on Azure Data Factory. Today we will be all becoming advanced factory workers!... And we completely recommend this description when describing your job to family members. But be warned, if you go on to tell them that the factory is in the cloud you are likely to be branded as crazy. However, here and now that is ok. You are amongst like-minded geeky friends that all want to become cloud factory workers as well :-)
 
 On a more serious note; throughout our day of training you will quickly notice, like with most technologies, there are an awful lot of different ways you can implement this Azure orchestration service and understanding the best way to do something is often the biggest challenge. That said, if you only take away one thing from today I would ask that you have an appreciation of this fact. Then when delviering solutions you take a step back from the requirements and think about the overall technical design and how Azure Data Factory should fit into your platform as a core component.
 

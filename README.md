@@ -47,27 +47,37 @@ ___
       * Azure IR
       * Hosted IR
     * Hosted IR Patterns
+      * Demo - Linked IR's 
+      * Demo - Simple Data Upload
     * Private Endpoints
 
 * __Module 3:__ [Using SSIS Packages in Azure](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M03%20-%20Using%20SSIS%20Packages.pdf)
     * SSIS Integration Runtime
     * Packages Running on PaaS
     * Scaling Out Package Execution
+      * Demo - Scale Out Execution of Anything
 
 * __Module 4:__ [Data Flows](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M04%20-%20Data%20Flows.pdf)
     * Mapping Data Flows
+      * Demo - Building a Mapping Data Flow
     * Wrangling Data Flows
+      * Demo - Using a Wrangling Data Flow
     * Configuration
     * Use Cases
 
 * __Module 5:__ [Metadata Driven Pipelines](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M05%20-%20Metadata%20Driven.pdf)
     * Expressions
     * Dynamic Pipelines
+      * Demo - Data Discovery and Upload
+      * Demo - Simple Metadata and Upload
+      * Demo - Lazy SQLDB Replication
     * Orchestration Framework - [procfwk.com](http://procfwk.com/)
+      * Demo - Framework Failure Handling & Restart
 
 * __Module 6:__ [Monitoring Alerting Security](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M06%20-%20Monitoring%20Alerting%20Security.pdf)
     * Logging
     * Alerting
+      * Demo - How To Build Alerting
     * Using Azure Key Vault
     * Access & Permissions
 
@@ -82,10 +92,12 @@ ___
 * __Module 8:__ [CI/CD with Azure DevOps](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M08%20-%20CICD%20with%20Azure%20DevOps.pdf)
     * Source Control vs Developer UI
     * ARM Template Deployments
+      * Demo - Basic Deployment via Azure DevOps
     * PowerShell Deployments
 
 * __Module 9:__ [Data Factory in Production](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M09%20-%20ADF%20in%20Production.pdf)
     * Testing
+      * Demo - Running NUnit Tests
     * Bootstrapping
     * Best Practices
 

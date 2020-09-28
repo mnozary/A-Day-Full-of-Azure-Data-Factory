@@ -1,16 +1,16 @@
-Hello friends and welcome to this full day workshop on Azure Data Factory. Today we will be all becoming advanced factory workers!... And we completely recommend this description when describing your job to family members. But be warned, if you go on to tell them that the factory is in the cloud you are likely to be branded as crazy. However, here and now that is ok. You are amoungst like minded geeky friends that all want to become cloud factory workers as well :-)
+Hello friends and welcome to this full day workshop on Azure Data Factory. Today we will be all becoming advanced factory workers!... And we completely recommend this description when describing your job to family members. But be warned, if you go on to tell them that the factory is in the cloud you are likely to be branded as crazy. However, here and now that is ok. You are amongst like-minded geeky friends that all want to become cloud factory workers as well :-)
 
-On a more serious note; throughout our day of training you will quickly notice, like with most technologies, there is an awful lot of different ways you can implement this Azure orchestration service and understanding the best way to do something is often the biggest challenge. That said, if you only take away one thing from today I would ask that you have an appreciation of this fact. Then when delviering solutions you take a step back from the requirements and think about the overall technical design and how Azure Data Factory should fit into your platform as a core component.
+On a more serious note; throughout our day of training you will quickly notice, like with most technologies, there are an awful lot of different ways you can implement this Azure orchestration service and understanding the best way to do something is often the biggest challenge. That said, if you only take away one thing from today I would ask that you have an appreciation of this fact. Then when delviering solutions you take a step back from the requirements and think about the overall technical design and how Azure Data Factory should fit into your platform as a core component.
 
-All to often with new and shiny services we start playing around then try to make the technology fit our solution. Rather than thinking about the solution requirements and which technology meets our needs. This is true of all developers, I don't want to preach, so am simply asking for a little bit of mindfulness.
+All too often with new and shiny services we start playing around then try to make the technology fit our solution. Rather than thinking about the solution requirements and which technology meets our needs. This is true of all developers, I don't want to preach, so am simply asking for a little bit of mindfulness.
 
 ## Session Abstract
 
 __A Day Full of Azure Data Factory__
 
-If we want to achieve any data processing in Azure you need an umbrella service to manage, monitor and schedule your solution. For a long time when working on premises, the SQL Agent has been our go-to tool, combined with T-SQL and SSIS packages. It’s now time to upgrade our skills and start using cloud native services to achieve the same thing on the Microsoft Cloud Platform. Within a PaaS only Modern Data Platform, the primary component for delivering that orchestration is Azure Data Factory, combined with various other compute resources.
+To achieve any data processing in Azure you need an umbrella service to manage, monitor and schedule your solution. For a long time when working on premises, the SQL Agent has been our go-to tool, combined with T-SQL and SSIS packages. It’s now time to upgrade our skills and start using cloud native services to achieve the same thing on the Microsoft Cloud Platform. Within a PaaS-only Modern Data Platform, the primary component for delivering that orchestration is Azure Data Factory, combined with various other compute resources.
 
-In this full day of training we’ll start with the basics and learn how to orchestration your Azure Data Platform end to end. You learn how to build our Azure ETL/ELT pipelines using all Data Factory has to offer. Plus, consider hybrid architectures, dynamic design patterns, think about lifting and shifting legacy packages, and explore complex bootstrapping to orchestrate everything within your solution.
+In this full day of training you’ll start with the basics and learn how to orchestrate your Azure Data Platform end to end. You will learn how to build Azure ETL/ELT pipelines using all Data Factory has to offer. Plus, consider hybrid architectures, dynamic design patterns, think about lifting and shifting legacy packages, and explore complex bootstrapping to orchestrate everything within your solution.
 
 We’ll breakdown the content for this rich Azure PaaS resource as follows:
 
@@ -40,9 +40,17 @@ You can contact Paul via:
 - Blog [mrpaulandrew.com](https://mrpaulandrew.com)
 
 ### Richard Swinbank
+__Senior Data Engineer @ Boomin__
 
-Lab author extraordinaire!!
-;-)
+Richard is the author of the lab materials provided as part of the workshop. He is an experienced data engineer specialising in the Microsoft Azure and SQL Server data platforms. An active member of the Microsoft data platform community, Richard is a speaker, blogger, volunteer and Data Relay event organiser. His book "ADF By Example" will be published by Apress in early 2021.
+
+You can contact Richard via:
+
+- Email [richard@richardswinbank.net](mailto:richard@richardswinbank.net)
+- Twitter [@richardswinbank](https://twitter.com/RichardSwinbank)
+- LinkedIn [In/richardswinbank](https://www.linkedin.com/in/richardswinbank/)
+- Blog [richardswinbank.net](https://richardswinbank.net)
+
 
 ## Agenda
 

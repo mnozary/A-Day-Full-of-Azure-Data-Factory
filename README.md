@@ -1,8 +1,12 @@
-Hello friends and welcome to this full day workshop on Azure Data Factory. Today we will be all becoming advanced factory workers!... And we completely recommend this description when describing your job to family members. But be warned, if you go on to tell them that the factory is in the cloud you are likely to be branded as crazy. However, here and now that is ok. You are amongst like-minded geeky friends that all want to become cloud factory workers as well :-)
+# A Day Full of Azure Data Factory
+
+![Data Factory Icon](https://mrpaulandrew.github.io/procfwk/datafactory.png){:style="float: right;margin-left: 15px;margin-bottom: 10px;"}Hello friends and welcome to this full day workshop on Azure Data Factory. Today we will be all becoming advanced factory workers!... And we completely recommend this description when describing your job to family members. But be warned, if you go on to tell them that the factory is in the cloud you are likely to be branded as crazy. However, here and now that is ok. You are amongst like-minded geeky friends that all want to become cloud factory workers as well :-)
 
 On a more serious note; throughout our day of training you will quickly notice, like with most technologies, there are an awful lot of different ways you can implement this Azure orchestration service and understanding the best way to do something is often the biggest challenge. That said, if you only take away one thing from today I would ask that you have an appreciation of this fact. Then when delviering solutions you take a step back from the requirements and think about the overall technical design and how Azure Data Factory should fit into your platform as a core component.
 
 All too often with new and shiny services we start playing around then try to make the technology fit our solution. Rather than thinking about the solution requirements and which technology meets our needs. This is true of all developers, I don't want to preach, so am simply asking for a little bit of mindfulness.
+
+___
 
 ## Session Abstract
 
@@ -26,11 +30,75 @@ We’ll breakdown the content for this rich Azure PaaS resource as follows:
 
 If that's not enough content for one day, you will also get access to a set of hands-on labs that you can work through at your own pace. Whether you are new to Azure Data Factory or have some experience, you will leave this workshop with new skills and ideas for your projects.
 
+___
+
+## Full Agenda
+
+* __Module 1:__ [Data Factory Fundamentals](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M01%20-%20Fundamentals.pdf)
+    * What is it and why use it?
+    * Resource Components
+    * Common Activities
+    * Execution Dependencies
+
+* __Module 2:__ [Uploading Data to Azure](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M02%20-%20Uploading%20Data.pdf)
+    * Integration Runtimes
+      * Azure IR
+      * Hosted IR
+    * Hosted IR Patterns
+    * Private Endpoints
+
+* __Module 3:__ [Using SSIS Packages in Azure](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M03%20-%20Using%20SSIS%20Packages.pdf)
+    * SSIS Integration Runtime
+    * Packages Running on PaaS
+    * Scaling Out Package Execution
+
+* __Module 4:__ [Data Flows](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M04%20-%20Data%20Flows.pdf)
+    * Mapping Data Flows
+    * Wrangling Data Flows
+    * Configuration
+    * Use Cases
+
+* __Module 5:__ [Metadata Driven Pipelines](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M05%20-%20Metadata%20Driven.pdf)
+    * Expressions
+    * Dynamic Pipelines
+    * Orchestration Framework - [procfwk.com](http://procfwk.com/)
+
+* __Module 6:__ [Monitoring Alerting Security](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M06%20-%20Monitoring%20Alerting%20Security.pdf)
+    * Logging
+    * Alerting
+    * Using Azure Key Vault
+    * Access & Permissions
+
+* __Module 7:__ [Pricing & Limitations](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M07%20-%20Pricing%20%26%20Limitations.pdf)
+  * Cost
+    * Activities
+    * Data Integration Units
+    * Data Flow Compute
+    * Wider Platform Orchestration
+  * Resource Limitations
+
+* __Module 8:__ [CI/CD with Azure DevOps](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M08%20-%20CICD%20with%20Azure%20DevOps.pdf)
+    * Source Control vs Developer UI
+    * ARM Template Deployments
+    * PowerShell Deployments
+
+* __Module 9:__ [Data Factory in Production](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M09%20-%20ADF%20in%20Production.pdf)
+    * Testing
+    * Bootstrapping
+    * Best Practices
+
+* __Module 10:__ [Wrap Up](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory/blob/master/Slides/M10%20-%20Wrap%20Up.pdf)
+    * Conclusions
+    * Questions
+    * Homework
+
+___
+
 ## Training Day Contributors
 ### Paul Andrew 
 __Principal Consultant - Solution Architect & Data Platform MVP @ Altius Consulting Ltd__
 
-Paul is a Microsoft Data Platform MVP with 15+ years’ experience working with the complete on premises SQL Server stack in a variety of roles and industries. Now as an industry leading consultant has turned his keyboard to big data solutions on the Microsoft cloud platform. Specialising in all things data engineering (Data Factory, Data Bricks, Data Lake and Stream Analytics). Paul is also a STEM Ambassador for the networking education in schools’ programme, PASS chapter leader, a member of the Data Relay committee, SQL Bits, SQL Saturday, SQL Day, SQLGLA, PASS Summit speaker and helper. Currently the Stack Overflow top user for Azure Data Factory. As well as very active member of the technical community.
+Paul is a Microsoft Data Platform MVP with 15+ years’ experience working with the complete on premises SQL Server stack in a variety of roles and industries. Now as an industry leading consultant has turned his keyboard to big data solutions on the Microsoft cloud platform. Specialising in all things data engineering (Data Factory, Data Bricks, Data Lake and Stream Analytics). Paul is also a STEM Ambassador for the networking education in schools’ programme, PASS chapter leader, a member of the Data Relay committee, SQL Bits, SQL Saturday, SQL Day, SQLGLA, PASS Summit speaker and helper.
 
 You can contact Paul via:
 
@@ -51,62 +119,4 @@ You can contact Richard via:
 - LinkedIn [In/richardswinbank](https://www.linkedin.com/in/richardswinbank/)
 - Blog [richardswinbank.net](https://richardswinbank.net)
 
-
-## Agenda
-
-* __Module 1:__ [Data Factory Fundamentals](#AddLinkToSlides)
-    * What is it and why use it?
-    * Resource Components
-    * Common Activities
-    * Execution Dependencies
-
-* __Module 2:__ [Uploading Data to Azure](#AddLinkToSlides)
-    * Integration Runtimes
-    * Hosted IR Patterns
-    * Private Endpoints
-
-* __Module 3:__ [Using SSIS Packages in Azure](#AddLinkToSlides)
-    * SSIS Integration Runtime
-    * Packages Running on PaaS
-    * Scaling Out Package Execution
-
-* __Module 4:__ [Data Flows](#AddLinkToSlides)
-    * Mapping Data Flows
-    * Wrangling Data Flows
-    * Configuration
-    * Use Cases
-
-* __Module 5:__ [Metadata Driven Pipelines](#AddLinkToSlides)
-    * Expressions
-    * Dynamic Pipelines
-    * Orchestration Framework - [procfwk.com](http://procfwk.com/)
-
-* __Module 6:__ [Monitoring Alerting Security](#AddLinkToSlides)
-    * Logging
-    * Alerting
-    * Using Azure Key Vault
-    * Access & Permissions
-
-* __Module 7:__ [Pricing & Limitations](#AddLinkToSlides)
-  * Cost
-    * Activities
-    * Data Integration Units
-    * Data Flow Compute
-    * Wider Platform Orchestration
-  * Resource Limitations
-
-* __Module 8:__ [CI/CD with Azure DevOps](#AddLinkToSlides)
-    * Source Control vs Developer UI
-    * ARM Template Deployments
-    * PowerShell Deployments
-
-* __Module 9:__ [Data Factory in Production](#AddLinkToSlides)
-    * Testing
-    * Bootstrapping
-    * Best Practices
-
-* __Module 10:__ [Wrap Up](#AddLinkToSlides)
-    * Conclusions
-    * Questions
-    * Homework
-
+___

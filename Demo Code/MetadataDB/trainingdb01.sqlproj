@@ -587,5 +587,6 @@
     <Build Include="dbo\Tables\UploadLog.sql" />
     <Build Include="dbo\Stored Procedures\LogUploadStart.sql" />
     <Build Include="dbo\Stored Procedures\LogUploadFinish.sql" />
+    <Build Include="Scripts\Scale Out Demo Queries.sql" />
   </ItemGroup>
 </Project>

@@ -112,7 +112,7 @@ You can contact Paul via:
 ### Richard Swinbank
 __Senior Data Engineer @ Boomin__
 
-Richard is the author of the lab materials provided as part of the workshop. He is an experienced data engineer specialising in the Microsoft Azure and SQL Server data platforms. An active member of the Microsoft data platform community, Richard is a speaker, blogger, volunteer and Data Relay event organiser. His book "ADF By Example" will be published by Apress in early 2021.
+Richard is the author of the lab materials provided as part of the workshop. He is an experienced data engineer specialising in the Microsoft Azure and SQL Server data platforms. An active member of the Microsoft data platform community, Richard is a speaker, blogger, volunteer and Data Relay event organiser. His book _Azure Data Factory by Example_ will be published by Apress in early 2021.
 
 You can contact Richard via:
 
